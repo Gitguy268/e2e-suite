@@ -8,6 +8,10 @@ Browser smoke tests for 26 web apps, using tester-army/e2e with locators only.
 
 Each app is served from its existing build, so rebuild an app before trusting a pass. Serve commands live in `apps.ts`, and results land in `.e2e/results.txt`.
 
+<!-- live-links -->
+**Project page:** [gitguy268.github.io/e2e-suite](https://gitguy268.github.io/e2e-suite/) · [e2e-suite.vercel.app](https://e2e-suite.vercel.app)
+<!-- /live-links -->
+
 <!-- run-steps:start -->
 ## Run it locally, step by step
 
