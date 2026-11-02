@@ -1,0 +1,13 @@
+{
+  "name": "e2e-suite",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "./run-all.sh"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@e2e-dev/web": "^0.15.2",
+    "e2e": "^0.21.2"
+  },
+  "private": true
+}
