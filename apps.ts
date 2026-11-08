@@ -21,7 +21,7 @@ const node = (dir: string, script: string, args: string[] = []) => ({
 
 export const apps: Record<string, object> = {
   '8bit-player': stat('8bit-player'),
-  archium: stat('archium/site'),
+  hillium: stat('hillium/site'),
   audiocheck: vitePreview('audiocheck'),
   'better-photocraft': stat('Better-Photocraft-Web-claude/dist/web'),
   convert: vitePreview('convert-gitguy268'),

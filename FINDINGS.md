@@ -7,8 +7,8 @@ and fails on any uncaught JS error (`errors.js` → `window.__errs`).
 
 ## Result: 25 / 25 pass (about 1.5 minutes, 2026-10-18); skyhold added 2026-10-26 and passes on its own
 
-8bit-player, archium, audiocheck, better-photocraft, convert, cozy-christmas-lab, gitguy268,
-glasspaint, ipod, liquidframe (also covers openphoto), mp4, openfinder, pikado, qrer,
+8bit-player, audiocheck, better-photocraft, convert, cozy-christmas-lab, gitguy268,
+glasspaint, hillium, ipod, liquidframe (also covers openphoto), mp4, openfinder, pikado, qrer,
 rubber-hose-revue, skyhold, spot-apporteren, spot-fetch, spot-light, spot-snake, tabshell, textarea,
 usa-website, vinyl, web2app, win97.
 
