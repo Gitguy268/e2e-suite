@@ -6,6 +6,8 @@ export E2E_TELEMETRY_DISABLED=1
 mkdir -p .e2e
 apps=${*:-$(node -e "import('./apps.ts').then(m => console.log(Object.keys(m.apps).join(' ')))")}
 for a in $apps; do
+  dir=$(node -e "import('./apps.ts').then(m => console.log(m.needs[process.argv[1]] ?? ''))" "$a")
+  if [ -n "$dir" ] && [ ! -e "$dir" ]; then printf '%-18s %s\n' "$a" "SKIP (not on disk: $(echo "$dir" | sed "s#^$HOME#~#"))"; continue; fi
   APP=$a npx e2e run > ".e2e/$a.log" 2>&1 && s=PASS || { s="FAIL ($?) see .e2e/$a.log"; }
   printf '%-18s %s\n' "$a" "$s"
 done | tee .e2e/results.txt

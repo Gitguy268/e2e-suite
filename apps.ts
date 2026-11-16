@@ -2,6 +2,8 @@ import { homedir, tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const H = process.env.E2E_PROJECTS_DIR ?? homedir();
+// the folder each app needs on disk; run-all.sh skips an app whose folder is gone
+export const needs: Record<string, string> = {};
 const any = 'http://127.0.0.1:0';
 
 // Serve a folder as-is; port 0 lets the runner pick a free one.
@@ -65,4 +67,21 @@ export const apps: Record<string, object> = {
   vinyl: stat('vinyl-player-realistic-map/realistic-vinyl-player-claude-html-1'),
   web2app: node('web2app', 'server.js'),
   win97: vitePreview('win97-excalidraw-claude'),
+  // added 2026-11-16
+  'spot-light-hd': stat('spot-light-hd'),
+  'web-pak': stat('web-pak/app'),
+  flashnack: vitePreview('flashnack'),
+  'lvw-bench': stat('LvW-bench/web'),
+  retrofind: {
+    url: any,
+    // a SearXNG address nothing listens on: the test never searches, and the real one stays untouched
+    command: { executable: 'python3', args: ['server.py', '--port', '{port}', '--searxng', 'http://127.0.0.1:9'], cwd: `${H}/retrofind` },
+  },
 };
+
+// record the folder of every app from its command
+for (const [name, a] of Object.entries(apps) as [string, { command: { args: string[]; cwd?: string; executable: string } }][]) {
+  const c = a.command, d = c.args.indexOf('-d');
+  needs[name] = d >= 0 ? c.args[d + 1] : c.cwd ?? c.args.find(x => x.startsWith(H)) ?? c.executable;
+}
+needs.skyhold = `${H}/skyhold/dist/skyhold`;
